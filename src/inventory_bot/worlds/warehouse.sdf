@@ -1,0 +1,143 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="warehouse">
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic"/>
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>true</shadows>
+    </scene>
+    <light name="sun" type="directional">
+      <pose>0 0 10 0 0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="warehouse_walls">
+      <static>true</static>
+      <link name="outer_west"><pose>-6.5 0 0.5 0 0 0</pose><collision name="col"><geometry><box><size>0.2 8.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>0.2 8.2 1</size></box></geometry><material><ambient>0.2 0.2 0.3 1</ambient></material></visual></link>
+      <link name="outer_north"><pose>-3.5 4 0.5 0 0 0</pose><collision name="col"><geometry><box><size>6.2 0.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>6.2 0.2 1</size></box></geometry><material><ambient>0.2 0.2 0.3 1</ambient></material></visual></link>
+      <link name="outer_south"><pose>-3.5 -4 0.5 0 0 0</pose><collision name="col"><geometry><box><size>6.2 0.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>6.2 0.2 1</size></box></geometry><material><ambient>0.2 0.2 0.3 1</ambient></material></visual></link>
+      <link name="east_room_b"><pose>-0.5 2.5 0.5 0 0 0</pose><collision name="col"><geometry><box><size>0.2 3.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>0.2 3.2 1</size></box></geometry><material><ambient>0.2 0.2 0.3 1</ambient></material></visual></link>
+      <link name="east_room_c"><pose>-0.5 -2.5 0.5 0 0 0</pose><collision name="col"><geometry><box><size>0.2 3.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>0.2 3.2 1</size></box></geometry><material><ambient>0.2 0.2 0.3 1</ambient></material></visual></link>
+      <link name="entrance_top_lip"><pose>-0.5 0.7 0.5 0 0 0</pose><collision name="col"><geometry><box><size>0.2 0.6 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>0.2 0.6 1</size></box></geometry><material><ambient>0.9 0.1 0.1 1</ambient></material></visual></link>
+      <link name="entrance_bottom_lip"><pose>-0.5 -0.7 0.5 0 0 0</pose><collision name="col"><geometry><box><size>0.2 0.6 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>0.2 0.6 1</size></box></geometry><material><ambient>0.9 0.1 0.1 1</ambient></material></visual></link>
+      <link name="divider_room_a_b"><pose>-3.5 2.5 0.5 0 0 0</pose><collision name="col"><geometry><box><size>0.2 3 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>0.2 3 1</size></box></geometry><material><ambient>0.1 0.6 0.1 1</ambient></material></visual></link>
+      <link name="c_north_seg1"><pose>-5.95 1 0.5 0 0 0</pose><collision name="col"><geometry><box><size>1.1 0.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>1.1 0.2 1</size></box></geometry><material><ambient>0.1 0.1 0.7 1</ambient></material></visual></link>
+      <link name="c_north_seg2"><pose>-4.05 1 0.5 0 0 0</pose><collision name="col"><geometry><box><size>1.1 0.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>1.1 0.2 1</size></box></geometry><material><ambient>0.1 0.1 0.7 1</ambient></material></visual></link>
+      <link name="c_north_seg3"><pose>-2.95 1 0.5 0 0 0</pose><collision name="col"><geometry><box><size>1.1 0.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>1.1 0.2 1</size></box></geometry><material><ambient>0.1 0.1 0.7 1</ambient></material></visual></link>
+      <link name="c_north_seg4"><pose>-1.05 1 0.5 0 0 0</pose><collision name="col"><geometry><box><size>1.1 0.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>1.1 0.2 1</size></box></geometry><material><ambient>0.1 0.1 0.7 1</ambient></material></visual></link>
+      <link name="c_south_seg1"><pose>-5.2 -1 0.5 0 0 0</pose><collision name="col"><geometry><box><size>2.6 0.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>2.6 0.2 1</size></box></geometry><material><ambient>0.1 0.1 0.7 1</ambient></material></visual></link>
+      <link name="c_south_seg2"><pose>-1.8 -1 0.5 0 0 0</pose><collision name="col"><geometry><box><size>2.6 0.2 1</size></box></geometry></collision><visual name="vis"><geometry><box><size>2.6 0.2 1</size></box></geometry><material><ambient>0.1 0.1 0.7 1</ambient></material></visual></link>
+    </model>
+    <model name="sph-1">
+      <pose>-5.19814 2.99701 0.2 0 0 0</pose>
+      <link name="link">
+        <visual name="v">
+          <geometry><sphere><radius>0.2</radius></sphere></geometry>
+          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material>
+        </visual>
+        <collision name="c">
+          <geometry><sphere><radius>0.2</radius></sphere>></geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="cube_1">
+      <pose>-4.85525 3 0.1 0 0 0</pose>
+      <link name="link">
+        <visual name="v">
+          <geometry><box><size>0.2 0.2 0.2</size></box></geometry>
+          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material>
+        </visual>
+        <collision name="c">
+          <geometry><box><size>0.2 0.2 0.2</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="cyl_1">
+      <pose>-1.36669 2.93821 0.24 0 0 0</pose>
+      <link name="link">
+        <visual name="v">
+          <geometry><cylinder><radius>0.2</radius><length>0.48</length></cylinder></geometry>
+          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material>
+        </visual>
+        <collision name="c">
+          <geometry><cylinder><radius>0.2</radius><length>0.48</length></cylinder></geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="cyl_2">
+      <pose>-1.92267 2.99783 0.2 0 0 0</pose>
+      <link name="link">
+        <visual name="v">
+          <geometry><cylinder><radius>0.2</radius><length>0.4</length></cylinder></geometry>
+          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material>
+        </visual>
+        <collision name="c">
+          <geometry><cylinder><radius>0.2</radius><length>0.48</length></cylinder></geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="cube-2">
+      <pose>-1.72069 -2.22478 0.099999 0 0 -0</pose>
+      <link name="link">
+        <visual name="v">
+          <geometry><box><size>0.2 0.2 0.2</size></box></geometry>
+          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material>
+        </visual>
+        <collision name="c">
+          <geometry><box><size>0.2 0.2 0.2</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="sph_2">
+      <pose>-1.61931 -3.19709 0.2 0.340186 0.345402 0.067378</pose>
+      <link name="link">
+        <visual name="v">
+          <geometry><sphere><radius>0.2</radius></sphere></geometry>
+          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material>
+        </visual>
+        <collision name="c">
+          <geometry><sphere><radius>0.2</radius></sphere></geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="cyl-3">
+      <pose>-1.96571 -2.66191 0.239999 0 0 0</pose>
+      <link name="link">
+        <visual name="v">
+          <geometry><cylinder><radius>0.2</radius><length>0.48</length></cylinder></geometry>
+          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material>
+        </visual>
+        <collision name="c">
+          <geometry><cylinder><radius>0.2</radius><length>0.48</length></cylinder></geometry>
+        </collision>
+      </link>
+    </model>
+  </world>
+</sdf>

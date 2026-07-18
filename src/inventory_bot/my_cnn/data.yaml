@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../train/images
+
+
+nc: 8
+names: ['black wall', 'blue wall', 'cube', 'cylinder', 'green wall', 'red object', 'sphere', 'yellow wall']
+
+roboflow:
+  workspace: uwu-kr4el
+  project: shapes-l0s0y
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/uwu-kr4el/shapes-l0s0y/dataset/1
